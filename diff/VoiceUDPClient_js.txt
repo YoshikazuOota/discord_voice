@@ -1,0 +1,37 @@
+*** /Users/yoshikazuoota/Dropbox/dev/discord/voice_save/node_modules_back/discord.js/src/client/voice/VoiceUDPClient.js	2018-12-16 09:56:42 +0000
+--- /Users/yoshikazuoota/Dropbox/dev/discord/voice_save/node_modules/discord.js/src/client/voice/VoiceUDPClient.js	1985-10-26 08:15:00 +0000
+***************
+*** 82,89 ****
+    createUDPSocket(address) {
+      this.discordAddress = address;
+      const socket = this.socket = udp.createSocket('udp4');
+-     const bind_port = '33333';
+-     socket.bind(bind_port);
+  
+      socket.once('message', message => {
+        const packet = parseLocalPacket(message);
+--- 82,87 ----
+    createUDPSocket(address) {
+      this.discordAddress = address;
+      const socket = this.socket = udp.createSocket('udp4');
+  
+      socket.once('message', message => {
+        const packet = parseLocalPacket(message);
+***************
+*** 95,103 ****
+        this.localAddress = packet.address;
+        this.localPort = packet.port;
+  
+-         const run_command = `udpforwarder --protocol udp4 --port ${packet.port} --address 0.0.0.0 --forwarderPort 0 --forwarderAddress 0.0.0.0 --destinationPort ${bind_port} --destinationAddress 0.0.0.0`
+-         console.log(run_command);
+- 
+        this.voiceConnection.sockets.ws.sendPacket({
+          op: Constants.VoiceOPCodes.SELECT_PROTOCOL,
+          d: {
+--- 93,98 ----
+        this.localAddress = packet.address;
+        this.localPort = packet.port;
+  
+        this.voiceConnection.sockets.ws.sendPacket({
+          op: Constants.VoiceOPCodes.SELECT_PROTOCOL,
+          d: {

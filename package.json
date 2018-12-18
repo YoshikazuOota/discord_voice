@@ -1,0 +1,14 @@
+{
+  "name": "voice-reveive",
+  "dependencies": {
+    "bufferutil": "4.0.0",
+    "discord": "0.8.2",
+    "discord.js": "^11.4.2",
+    "ffmpeg-binaries": "4.0.0",
+    "lbmrn-pcm-utils": "0.0.4",
+    "node-udp-forwarder": "0.0.5",
+    "node-opus": "0.3.1",
+    "dotenv": "6.1.0",
+    "@google-cloud/speech": "2.1.1"
+  }
+}

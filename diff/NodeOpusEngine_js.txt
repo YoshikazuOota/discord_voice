@@ -1,0 +1,35 @@
+*** /Users/yoshikazuoota/Dropbox/dev/discord/voice_save/node_modules_back/discord.js/src/client/voice/opus/NodeOpusEngine.js	2018-11-18 11:26:18 +0000
+--- /Users/yoshikazuoota/Dropbox/dev/discord/voice_save/node_modules/discord.js/src/client/voice/opus/NodeOpusEngine.js	1985-10-26 08:15:00 +0000
+***************
+*** 11,17 ****
+        throw err;
+      }
+      this.encoder = new opus.OpusEncoder(this.samplingRate, this.channels);
+-     this.encoder_mono = new opus.OpusEncoder(this.samplingRate, 1);
+      super.init();
+    }
+  
+--- 11,16 ----
+        throw err;
+      }
+      this.encoder = new opus.OpusEncoder(this.samplingRate, this.channels);
+      super.init();
+    }
+  
+***************
+*** 34,40 ****
+  
+    decode(buffer) {
+      super.decode(buffer);
+!     return this.encoder_mono.decode(buffer, 1920);
+    }
+  }
+  
+--- 33,39 ----
+  
+    decode(buffer) {
+      super.decode(buffer);
+!     return this.encoder.decode(buffer, 1920);
+    }
+  }
+  
