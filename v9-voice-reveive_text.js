@@ -46,8 +46,7 @@ client.on('message', msg => {
                             .on('error', console.error)
                             .on('data', (data) => {
                                 if(data.error === null){
-                                    console.log(data);
-                                    console.log(data.results[0].alternatives);
+                                    console.log(`${user.username} : ${data.results[0].alternatives[0].transcript}`);
                                 }
                             });
                         audioStream.pipe(recognizeStream);
